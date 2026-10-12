@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login | Computer Service Center</title>
+  <meta name="description" content="Computer Service Center: laptop and desktop repair, data recovery, upgrades and networking.">
+  <meta name="theme-color" content="#0B2A6B">
+  <link rel="icon" type="image/webp" href="./images/logo-mark-navyblue.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+/* ===== Tokens & base ===== */
+:root{--bg:#F5F8FE;--ice:#EAF1FD;--ice2:#DCE8FB;--navy:#0B2A6B;--navy2:#071D4F;--blue:#1D5FE8;--sky:#8DB8FF;--ink:#0A1630;--mut:#54627F;--line:#DCE6F7;--amb:#F5A524;--grn:#1FA971;--sh:0 1px 2px rgba(11,42,107,.06),0 12px 32px -14px rgba(11,42,107,.20);--shh:0 2px 4px rgba(11,42,107,.06),0 26px 50px -18px rgba(11,42,107,.34);--fd:'Sora','Segoe UI',Arial,sans-serif;--fb:'Figtree','Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button,input{font:inherit;color:inherit}
+h1,h2,h3,h4{font-family:var(--fd);letter-spacing:-.02em;line-height:1.15;margin:0;color:var(--navy)}
+p{margin:0}
+.container{width:min(1180px,92%);margin-inline:auto}
+.ic{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid rgba(29,95,232,.45);outline-offset:3px;border-radius:8px}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ===== Buttons & form fields ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:12px;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font-weight:700;font-size:15px;cursor:pointer;transition:transform .25s,background .25s,box-shadow .25s,color .25s,border-color .25s;white-space:nowrap}
+.btn:hover{background:var(--navy);border-color:var(--navy);transform:translateY(-2px);box-shadow:0 14px 26px -12px rgba(11,42,107,.55)}
+.btn:active{transform:translateY(0)}
+.btn .ic{width:18px;height:18px;transition:transform .25s}.btn:hover .ic{transform:translateX(3px)}
+.input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;outline:0;transition:border-color .25s,box-shadow .25s,background .25s}
+.input:hover{border-color:var(--sky)}
+.input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(29,95,232,.12)}
+.group{margin-bottom:16px}.group label{display:block;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:7px}
+.err{display:block;color:var(--red);font-size:13px;min-height:18px;margin-top:5px}
+
+/* ===== Split layout: photo (left) + form (right) ===== */
+body{background:#fff}
+.auth{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.auth-left{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--ice)}
+.auth-left img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.auth-left:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,29,79,.92) 0%,rgba(7,29,79,.55) 34%,rgba(7,29,79,0) 62%)}
+.auth-copy{position:absolute;z-index:2;left:48px;right:48px;bottom:52px;color:#fff}
+.auth-copy h2{color:#fff;font-size:clamp(28px,3vw,40px);margin-bottom:10px}.auth-copy p{color:#D4E2FA;max-width:460px}
+.auth-right{display:flex;align-items:center;justify-content:center;padding:44px 6%}
+.auth-box{width:min(500px,100%)}
+.auth-logo{height:36px;width:auto;margin-bottom:26px;transition:transform .3s}.auth-logo:hover{transform:scale(1.04)}
+.auth-box h1{font-size:clamp(26px,3vw,34px);margin-bottom:8px}.auth-box .sub{color:var(--mut);margin-bottom:22px}
+
+/* ===== Top row: logo (left) + Go home (right) ===== */
+.auth-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px}
+.auth-top .auth-logo{margin-bottom:0}
+.auth-top .back{margin-top:0}
+
+/* ===== Login / Sign up tabs ===== */
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--ice);border-radius:14px;padding:5px;margin-bottom:26px}
+.tabs a{text-align:center;padding:11px;border-radius:10px;font-weight:700;font-size:14.5px;color:var(--mut);transition:background .25s,color .25s}
+.tabs a:hover{color:var(--navy)}.tabs a.active{background:#fff;color:var(--navy);box-shadow:var(--sh)}
+
+/* ===== Role picker ===== */
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 22px}
+.rolebtn{text-align:left;padding:16px;border:1.5px solid var(--line);border-radius:16px;background:#fff;cursor:pointer;transition:border-color .25s,box-shadow .25s,transform .25s,background .25s}
+.rolebtn:hover{border-color:var(--sky);transform:translateY(-3px);box-shadow:var(--sh)}
+.rolebtn.selected{border-color:var(--blue);background:var(--ice);box-shadow:0 0 0 4px rgba(29,95,232,.1)}
+.rolebtn b{display:block;color:var(--navy);font-family:var(--fd);font-size:15px;margin-bottom:3px}.rolebtn small{color:var(--mut);font-size:12.5px;line-height:1.4;display:block}
+
+/* ===== Password field, remember me, social buttons ===== */
+.pw{position:relative}.pw button{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:38px;height:38px;border:0;background:transparent;border-radius:10px;color:var(--mut);cursor:pointer;display:grid;place-items:center;transition:background .25s,color .25s}
+.pw button:hover{background:var(--ice);color:var(--blue)}.pw .input{padding-right:50px}
+.check{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:14px;color:var(--mut);margin:4px 0 20px;flex-wrap:wrap}
+.check label{display:flex;gap:8px;align-items:center;cursor:pointer}.check input{accent-color:var(--blue);width:17px;height:17px}
+.check a{color:var(--blue);font-weight:600;transition:color .25s}.check a:hover{color:var(--navy);text-decoration:underline}
+.divider{display:flex;align-items:center;gap:14px;color:var(--mut);font-size:13px;margin:22px 0 16px}.divider:before,.divider:after{content:"";height:1px;background:var(--line);flex:1}
+.sos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sos a{display:grid;place-items:center;padding:12px;border:1.5px solid var(--line);border-radius:12px;font-weight:700;color:var(--navy);transition:background .25s,border-color .25s,transform .25s}
+.sos a:hover{background:var(--ice);border-color:var(--blue);transform:translateY(-3px)}
+.back{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-weight:600;color:var(--mut);font-size:14.5px;transition:color .25s,gap .25s}.back:hover{color:var(--blue);gap:10px}
+.back .ic{width:16px;height:16px;transform:rotate(180deg)}
+.fmsg{font-weight:600;font-size:14.5px;margin-top:12px;min-height:20px}.fmsg.ok{color:var(--grn)}.fmsg.bad{color:var(--red)}
+
+/* ===== Responsive ===== */
+@media(max-width:900px){
+  .auth{grid-template-columns:1fr}
+  .auth-left{position:relative;height:210px}.auth-left img.bg{object-position:center 28%}
+  .auth-copy{left:24px;right:24px;bottom:22px}.auth-copy p{display:none}.auth-copy h2{font-size:24px;margin:0}
+  .auth-right{padding:30px 5% 40px}
+}
+@media(max-width:600px){body{font-size:15.5px}}
+@media(max-width:480px){.roles{grid-template-columns:1fr}.rolebtn small{display:none}.rolebtn{padding:14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Icon sprite: reuse with <svg class="ic"><use href="#i-name"/></svg> ===== -->
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  </svg>
+
+  <div class="auth">
+
+    <!-- ===== Left: photo + tagline ===== -->
+    <div class="auth-left">
+      <img class="bg" src="./images/photos/1760842543713-108c3cadbba1.jpg" alt="" width="1200" height="1400">
+      <div class="auth-copy">
+        <h2>Your device. Our priority.</h2>
+        <p>Professional computer care, clear service and reliable support in one place.</p>
+      </div>
+    </div>
+
+    <!-- ===== Right: login form ===== -->
+    <div class="auth-right">
+      <div class="auth-box">
+
+        <!-- Top row: logo (left) + Go home (right) -->
+        <div class="auth-top">
+          <a href="index.html"><img class="auth-logo" src="./images/logo-navyblue.webp" alt="Stackly logo" width="95" height="36"></a>
+          <a class="back" href="index.html"><svg class="ic"><use href="#i-chev"/></svg>Go home</a>
+        </div>
+
+        <div class="tabs">
+          <a class="active" href="login.html">Login</a>
+          <a href="signup.html">Sign up</a>
+        </div>
+
+        <h1>Welcome back.</h1>
+        <p class="sub">Log in to open your service dashboard.</p>
+
+        <!-- Role picker (the chosen role decides which dashboard opens) -->
+        <div class="roles" role="radiogroup" aria-label="Choose role">
+          <button type="button" class="rolebtn selected" data-role="Administrator" role="radio" aria-checked="true">
+            <b>Administrator</b>
+            <small>Manage services, repairs, technicians and reports.</small>
+          </button>
+          <button type="button" class="rolebtn" data-role="Technician" role="radio" aria-checked="false">
+            <b>Technician</b>
+            <small>Manage assigned repairs and service status.</small>
+          </button>
+        </div>
+
+        <form id="af" novalidate>
+          <div class="group">
+            <label for="email">Email</label>
+            <input id="email" class="input" type="email" autocomplete="email" placeholder="you@example.com">
+            <span id="emailErr" class="err"></span>
+          </div>
+
+          <div class="group">
+            <label for="password">Password</label>
+            <div class="pw">
+              <input id="password" class="input" type="password" autocomplete="current-password" placeholder="At least 6 characters">
+              <button type="button" aria-label="Show or hide password"><svg class="ic"><use href="#i-eye"/></svg></button>
+            </div>
+            <span id="passErr" class="err"></span>
+          </div>
+
+          <div class="check">
+            <label><input type="checkbox"> Remember me</label>
+            <a href="404.html">Forgot password?</a>
+          </div>
+
+          <button class="btn" style="width:100%" type="submit">Login<svg class="ic"><use href="#i-chev"/></svg></button>
+          <div id="msg" class="fmsg" role="status"></div>
+        </form>
+
+        <div class="divider">or continue with</div>
+        <div class="sos">
+          <a href="404.html" aria-label="Google">Google</a>
+          <a href="404.html" aria-label="Facebook">Facebook</a>
+          <a href="404.html" aria-label="X">X</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ---------- Settings ---------- */
+    var EMAIL = /^[^\s@]+@[^\s@]+\.(com|in|org)$/i;   // .com, .in or .org only
+    var role = 'Administrator';                      // default role
+
+    function byId(id) { return document.getElementById(id); }
+
+    /* Accounts saved by the sign-up page (stored in this browser) */
+    function savedUsers() {
+      try {
+        return JSON.parse(localStorage.getItem('cscUsers') || '{}');
+      } catch (e) {
+        return {};
+      }
+    }
+
+    /* ---------- Role picker ---------- */
+    document.querySelectorAll('.rolebtn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.rolebtn').forEach(function (other) {
+          other.classList.remove('selected');
+          other.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('selected');
+        btn.setAttribute('aria-checked', 'true');
+        role = btn.dataset.role;
+      });
+    });
+
+    /* ---------- Show / hide password ---------- */
+    document.querySelectorAll('.pw button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var field = btn.parentNode.querySelector('input');
+        field.type = field.type === 'password' ? 'text' : 'password';
+      });
+    });
+
+    /* ---------- Login form ---------- */
+    byId('af').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var email = byId('email').value.trim();
+      var password = byId('password').value;
+
+      // Validate
+      byId('emailErr').textContent = EMAIL.test(email) ? '' : 'Enter a valid .com, .in or .org email.';
+      byId('passErr').textContent  = password.length >= 6 ? '' : 'Password must be at least 6 characters.';
+      if (byId('emailErr').textContent || byId('passErr').textContent) return;
+
+      // Name: saved name from sign-up, otherwise made from the email (ram.kumar@x.com -> Ram Kumar)
+      var user = savedUsers()[email.toLowerCase()];
+      var name = user && user.name
+        ? user.name
+        : email.split('@')[0]
+            .replace(/[._-]+/g, ' ')
+            .replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+
+      // Remember the session (the dashboards read these keys)
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userRole', role);
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userName', name);
+
+      byId('msg').className = 'fmsg ok';
+      byId('msg').textContent = 'Login successful. Opening your dashboard...';
+
+      // Go to the dashboard that matches the role
+      setTimeout(function () {
+        location.href = role === 'Administrator' ? 'admin-dashboard.html' : 'technician-dashboard.html';
+      }, 500);
+    });
+  })();
+  </script>
+</body>
+</html>

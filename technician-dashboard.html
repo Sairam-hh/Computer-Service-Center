@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Technician Dashboard | Computer Service Center</title>
+  <meta name="description" content="Computer Service Center: laptop and desktop repair, data recovery, upgrades and networking.">
+  <meta name="theme-color" content="#0B2A6B">
+  <link rel="icon" type="image/webp" href="./images/logo-mark-navyblue.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+:root{--bg:#F5F8FE;--surf:#fff;--ice:#EAF1FD;--ice2:#DCE8FB;--navy:#0B2A6B;--navy2:#071D4F;--blue:#1D5FE8;--blue2:#1450C9;--sky:#8DB8FF;--ink:#0A1630;--mut:#54627F;--line:#DCE6F7;--amb:#F5A524;--grn:#1FA971;--red:#D64545;--sh:0 1px 2px rgba(11,42,107,.06),0 12px 32px -14px rgba(11,42,107,.20);--shh:0 2px 4px rgba(11,42,107,.06),0 26px 50px -18px rgba(11,42,107,.34);--fd:'Sora','Segoe UI',Arial,sans-serif;--fb:'Figtree','Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit;color:inherit}
+h1,h2,h3,h4{font-family:var(--fd);letter-spacing:-.02em;line-height:1.15;margin:0;color:var(--navy)}
+p{margin:0}
+.container{width:min(1180px,92%);margin-inline:auto}
+.ic{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid rgba(29,95,232,.45);outline-offset:3px;border-radius:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:12px;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font-weight:700;font-size:15px;cursor:pointer;transition:transform .25s,background .25s,box-shadow .25s,color .25s,border-color .25s;white-space:nowrap}
+.btn:hover{background:var(--navy);border-color:var(--navy);transform:translateY(-2px);box-shadow:0 14px 26px -12px rgba(11,42,107,.55)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:transparent;color:var(--navy);border-color:var(--ice2)}
+.btn.ghost:hover{background:var(--ice);border-color:var(--blue);color:var(--blue)}
+.btn.white{background:#fff;color:var(--navy);border-color:#fff}
+.btn.white:hover{background:var(--amb);border-color:var(--amb);color:var(--navy2)}
+.btn.line{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn.line:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.btn.sm{padding:9px 16px;font-size:13.5px;border-radius:10px}
+.btn .ic{width:18px;height:18px;transition:transform .25s}.btn:hover .ic{transform:translateX(3px)}
+.link{display:inline-flex;align-items:center;gap:4px;font-weight:700;font-size:14.5px;color:var(--blue);transition:gap .25s,color .25s}
+.link .ic{width:16px;height:16px}.link:hover{gap:9px;color:var(--navy)}
+/* header */
+.site-header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(16px);-webkit-backdrop-filter:saturate(1.4) blur(16px);border-bottom:1px solid transparent;transition:box-shadow .3s,border-color .3s}
+.site-header.scrolled{border-color:var(--line);box-shadow:0 10px 30px -20px rgba(11,42,107,.4)}
+.nav{height:74px;display:flex;align-items:center;gap:32px}
+.brand{display:flex;align-items:center;transition:transform .3s,opacity .3s}.brand:hover{transform:scale(1.04)}
+.brand img{height:34px;width:auto}
+.navlinks{display:flex;gap:6px;margin-left:auto}
+.navlinks a{position:relative;padding:10px 16px;font-weight:600;font-size:15px;color:var(--mut);border-radius:10px;transition:color .25s,background .25s}
+.navlinks a:after{content:"";position:absolute;left:16px;right:16px;bottom:5px;height:2px;border-radius:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.navlinks a:hover{color:var(--navy);background:var(--ice)}
+.navlinks a:hover:after,.navlinks a.active:after{transform:scaleX(1)}
+.navlinks a.active{color:var(--navy)}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--navy);align-items:center;justify-content:center;cursor:pointer;transition:background .25s,border-color .25s}
+.menu-btn:hover{background:var(--ice);border-color:var(--blue)}
+.drawer-overlay{position:fixed;inset:0;background:rgba(7,29,79,.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s;z-index:70}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(340px,86%);background:#fff;z-index:80;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);padding:20px;display:flex;flex-direction:column;gap:6px;visibility:hidden}
+.drawer.open{transform:none;visibility:visible;box-shadow:-20px 0 50px -20px rgba(7,29,79,.4)}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.drawer-top img{height:30px;width:auto}
+.drawer a.dl{display:flex;align-items:center;justify-content:space-between;padding:14px 14px;border-radius:12px;font-weight:600;color:var(--navy);transition:background .25s,padding .25s,color .25s}
+.drawer a.dl:hover,.drawer a.dl.active{background:var(--ice);padding-left:20px;color:var(--blue)}
+.drawer .btn{margin-top:14px}
+/* hero */
+.hero{position:relative;background:radial-gradient(900px 480px at 85% 0%,#DCE8FB 0%,rgba(220,232,251,0) 70%),linear-gradient(180deg,#F5F8FE,#EEF4FE);padding:56px 0 120px}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(36px,4.8vw,62px);font-weight:700;letter-spacing:-.035em}
+.hero .lead{margin-top:20px;font-size:18.5px;color:var(--mut);max-width:540px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-facts{display:flex;gap:34px;margin-top:40px;padding-top:26px;border-top:1px solid var(--line);flex-wrap:wrap}
+.fact b{display:block;font-family:var(--fd);font-size:30px;color:var(--navy);letter-spacing:-.03em;line-height:1.1}
+.fact span{font-size:13.5px;color:var(--mut)}
+.hero-media{position:relative}
+.hero-media .frame{border-radius:28px;overflow:hidden;box-shadow:var(--shh);border:6px solid #fff;background:var(--ice)}
+.hero-media img{width:100%;height:auto;aspect-ratio:1200/730;object-fit:cover;object-position:center 15%;transition:transform .8s}
+.hero-media:hover img{transform:scale(1.04)}
+.badge-float{position:absolute;display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:var(--shh);font-size:13.5px;line-height:1.3;transition:transform .35s}
+.badge-float b{display:block;color:var(--navy);font-size:14.5px}
+.badge-float .dot{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--ice);color:var(--blue)}
+.badge-float:hover{transform:translateY(-5px)}
+.bf1{left:-26px;top:44px}.bf2{right:-18px;bottom:36px}
+.bf2 .dot{background:#FFF1D6;color:#B8770A}
+/* load sequence */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero .seq>*{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+.hero .seq>*:nth-child(1){animation-delay:.05s}.hero .seq>*:nth-child(2){animation-delay:.15s}.hero .seq>*:nth-child(3){animation-delay:.25s}.hero .seq>*:nth-child(4){animation-delay:.35s}
+.hero-media{animation:rise 1s .2s cubic-bezier(.2,.8,.2,1) both}
+/* tracker */
+.tracker-wrap{margin-top:-74px;position:relative;z-index:5}
+.tracker{background:#fff;border-radius:24px;box-shadow:var(--shh);padding:28px 32px;border:1px solid var(--line)}
+.tracker-row{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center}
+.tracker h2{font-size:21px}.tracker p.sub{font-size:14px;color:var(--mut);margin-top:2px}
+.input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;outline:0;transition:border-color .25s,box-shadow .25s,background .25s}
+.input:hover{border-color:var(--sky)}
+.input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(29,95,232,.12)}
+textarea.input{resize:vertical;min-height:130px}
+.tmsg{font-size:14px;margin-top:14px;font-weight:600}.tmsg:empty{display:none}
+.tmsg.ok{color:var(--grn)}.tmsg.bad{color:var(--red)}
+.steps-line{display:none;grid-template-columns:repeat(5,1fr);margin-top:22px;position:relative}
+.steps-line.show{display:grid}
+.sl{position:relative;text-align:center;font-size:13.5px;font-weight:600;color:var(--mut);padding-top:26px;transition:color .3s}
+.sl:before{content:"";position:absolute;top:6px;left:0;right:0;height:4px;background:var(--ice2)}
+.sl:first-child:before{left:50%}.sl:last-child:before{right:50%}
+.sl:after{content:"";position:absolute;top:0;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:#fff;border:3px solid var(--ice2);transition:all .3s}
+.sl.done{color:var(--navy)}.sl.done:before{background:var(--blue)}.sl.done:after{background:var(--blue);border-color:var(--blue)}
+.sl.now:after{box-shadow:0 0 0 6px rgba(29,95,232,.18);background:#fff;border-color:var(--blue)}
+.sl.now:before{background:linear-gradient(90deg,var(--blue),var(--ice2))}
+/* sections */
+.section{padding:92px 0}.section.tight{padding:64px 0}.section.alt{background:#fff;border-block:1px solid var(--line)}
+.head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:44px}
+.head h2{font-size:clamp(28px,3.4vw,42px);font-weight:700}
+.head p{color:var(--mut);max-width:460px;font-size:16.5px}
+.grid{display:grid;gap:22px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--sh);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;overflow:hidden}
+.card:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shh);border-color:var(--sky)}
+.card:hover:before{transform:scaleX(1)}
+.card h3{font-size:19px;margin:20px 0 8px}
+.card p{color:var(--mut);font-size:15px}
+.card .link{margin-top:18px}
+.ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--ice);color:var(--blue);transition:background .3s,color .3s,transform .4s}
+.ico .ic{width:26px;height:26px}
+.card:hover .ico{background:var(--blue);color:#fff;transform:rotate(-6deg) scale(1.06)}
+.tick{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--mut);margin-top:6px}.tick .ic{width:16px;height:16px;color:var(--grn)}
+/* service thumbs, stats, brands */
+.card.svc{padding-top:0}.card.svc .thumb{margin:0 -28px 22px;aspect-ratio:1000/640;overflow:hidden;background:var(--ice)}
+.card.svc .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.card.svc:hover .thumb img{transform:scale(1.08)}.card.svc h3{margin-top:16px}
+.statbar{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);overflow:hidden}
+.st{padding:28px;border-right:1px solid var(--line);transition:background .3s}.st:last-child{border:0}.st:hover{background:var(--ice)}
+.st b{display:block;font-family:var(--fd);font-size:30px;color:var(--navy);letter-spacing:-.03em}.st span{color:var(--mut);font-size:14px}
+.brands{display:flex;flex-wrap:wrap;gap:14px}.brands span{flex:1 1 120px;text-align:center;padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff;font-family:var(--fd);font-weight:700;color:var(--mut);transition:color .3s,border-color .3s,transform .3s,box-shadow .3s}
+.brands span:hover{color:var(--blue);border-color:var(--sky);transform:translateY(-4px);box-shadow:var(--sh)}
+/* split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split.rev .media{order:2}
+.media{position:relative;border-radius:26px;overflow:hidden;background:var(--ice);box-shadow:var(--shh);border:6px solid #fff}
+.media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.media:hover img{transform:scale(1.06)}
+.media.tall img{aspect-ratio:1200/857}
+.split h2{font-size:clamp(28px,3.2vw,40px);margin-bottom:16px}
+.split p.lead{color:var(--mut);font-size:17px}
+.feats{display:grid;gap:6px;margin-top:24px}
+.feat{display:flex;gap:16px;padding:14px 16px;border-radius:16px;border:1px solid transparent;transition:background .3s,border-color .3s,transform .3s}
+.feat:hover{background:#fff;border-color:var(--line);transform:translateX(8px);box-shadow:var(--sh)}
+.feat .ck{width:38px;height:38px;border-radius:12px;background:#E3F6EE;color:var(--grn);display:grid;place-items:center;flex:none;transition:background .3s,color .3s}
+.feat:hover .ck{background:var(--grn);color:#fff}
+.feat b{display:block;color:var(--navy);font-family:var(--fd);font-size:16px}.feat span{color:var(--mut);font-size:14.5px}
+/* steps */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative}
+.proc:before{content:"";position:absolute;top:30px;left:12%;right:12%;height:2px;background:repeating-linear-gradient(90deg,var(--sky) 0 8px,transparent 8px 16px)}
+.pstep{position:relative;text-align:center;padding:0 12px;transition:transform .35s}
+.pstep:hover{transform:translateY(-6px)}
+.pnum{width:60px;height:60px;margin:0 auto 18px;border-radius:50%;background:#fff;border:2px solid var(--sky);display:grid;place-items:center;font-family:var(--fd);font-weight:700;font-size:20px;color:var(--navy);position:relative;transition:background .3s,color .3s,border-color .3s,box-shadow .3s}
+.pstep:hover .pnum{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 12px 24px -10px rgba(29,95,232,.7)}
+.pstep h3{font-size:18px;margin-bottom:6px}.pstep p{color:var(--mut);font-size:15px}
+/* testimonials */
+.quote .stars{display:flex;gap:2px;color:var(--amb)}.quote .stars .ic{width:18px;height:18px}
+.quote p.q{font-size:16.5px;color:var(--ink);margin:16px 0 22px}
+.who{display:flex;align-items:center;gap:12px}
+.av{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--fd);font-weight:700;transition:background .3s,transform .3s}
+.card:hover .av{background:var(--blue);transform:scale(1.08)}
+.who b{display:block;color:var(--navy);font-size:15px}.who span{font-size:13.5px;color:var(--mut)}
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:16px}
+.gallery .media{border-width:4px;border-radius:22px}.gallery .media:first-child{grid-column:span 2;grid-row:span 2}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 16px;background:linear-gradient(0deg,rgba(7,29,79,.82),transparent);color:#fff;font-weight:700;font-size:15px;transform:translateY(100%);transition:transform .4s}
+.gallery .media:hover figcaption{transform:none}
+.gallery figure{margin:0}
+/* cta */
+.cta{position:relative;overflow:hidden;border-radius:30px;padding:64px;background:linear-gradient(120deg,#0B2A6B,#154AC0);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:34px}
+.cta:before,.cta:after{content:"";position:absolute;border-radius:50%;background:rgba(141,184,255,.18);pointer-events:none}
+.cta:before{width:380px;height:380px;right:-90px;top:-170px}.cta:after{width:240px;height:240px;right:200px;bottom:-150px}
+.cta h2{color:#fff;font-size:clamp(26px,3.2vw,38px);max-width:600px}.cta p{color:#C9D9F7;margin-top:12px;max-width:560px}
+.cta .actions{margin:0;position:relative;z-index:1}
+/* inner hero */
+.phero{background:radial-gradient(800px 380px at 90% 0%,#DCE8FB,rgba(220,232,251,0) 70%),linear-gradient(180deg,#F5F8FE,#EEF4FE);padding:50px 0 70px;border-bottom:1px solid var(--line)}
+.phero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--mut);margin-bottom:18px}
+.crumbs a{transition:color .25s}.crumbs a:hover{color:var(--blue)}.crumbs .ic{width:14px;height:14px}
+.phero h1{font-size:clamp(34px,4.4vw,54px);letter-spacing:-.03em}
+.phero p.lead{margin-top:16px;color:var(--mut);font-size:18px;max-width:560px}
+.phero .media{border-width:5px;max-height:340px}.phero .media img{aspect-ratio:1200/760}
+/* chips */
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.chip{padding:10px 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:700;font-size:14.5px;color:var(--mut);cursor:pointer;transition:all .25s}
+.chip:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.hide{display:none!important}
+/* faq */
+.faq{display:grid;gap:12px;max-width:860px;margin-inline:auto}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:16px;transition:border-color .3s,box-shadow .3s}
+.faq details:hover{border-color:var(--sky);box-shadow:var(--sh)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;justify-content:space-between;gap:20px;align-items:center;font-family:var(--fd);font-weight:600;color:var(--navy);font-size:16.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ic{transition:transform .3s;color:var(--blue)}.faq details[open] summary .ic{transform:rotate(45deg)}
+.faq details p{padding:0 24px 22px;color:var(--mut)}
+/* forms */
+.group{margin-bottom:16px}.group label{display:block;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:7px}
+.err{display:block;color:var(--red);font-size:13px;min-height:18px;margin-top:5px}
+.okmsg{color:var(--grn);font-weight:600;font-size:14.5px;margin-top:12px}
+.formcard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:var(--sh)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+/* contact cards link */
+a.card{display:block}
+/* team */
+.team .media{border-radius:0;border:0;box-shadow:none;margin:-28px -28px 22px;aspect-ratio:1/1}
+.team .media img{aspect-ratio:1/1}
+.role{color:var(--blue);font-weight:700;font-size:14px}
+/* table */
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:16px;background:#fff}
+table{width:100%;border-collapse:collapse;min-width:620px}
+th{font-size:13px;color:var(--mut);text-align:left;font-weight:700;background:#F3F7FE;padding:14px 18px;white-space:nowrap}
+td{padding:15px 18px;border-top:1px solid var(--line);font-size:14.5px;white-space:nowrap}
+tbody tr{transition:background .2s}tbody tr:hover{background:var(--ice)}
+.pill{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12.5px;font-weight:700}
+.p-blue{background:#E4EDFD;color:#1450C9}.p-amb{background:#FFF1D6;color:#9A6206}.p-grn{background:#DDF4EA;color:#12794F}.p-navy{background:#DCE3F4;color:#0B2A6B}.p-red{background:#FBE3E3;color:#B03030}
+/* footer */
+.site-footer{background:var(--navy2);color:#B9C8E6;margin-top:0;position:relative;overflow:hidden}
+.site-footer:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(29,95,232,.16);right:-180px;top:-260px;pointer-events:none}
+.foot{display:grid;grid-template-columns:1.5fr 1fr 1.1fr 1.3fr;gap:44px;padding:72px 0 48px;position:relative}
+.foot img.flogo{height:38px;width:auto;margin-bottom:20px;transition:transform .3s}.foot img.flogo:hover{transform:scale(1.05)}
+.foot p{font-size:14.5px;line-height:1.7;max-width:330px}
+.foot h4{color:#fff;font-size:16px;margin-bottom:18px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.foot ul a{display:inline-flex;align-items:center;gap:0;padding:5px 0;font-size:14.5px;position:relative;transition:color .25s,padding .3s,gap .3s}
+.foot ul a:before{content:"";width:0;height:2px;background:var(--amb);transition:width .3s;margin-right:0;border-radius:2px}
+.foot ul a:hover{color:#fff;padding-left:2px;gap:8px}.foot ul a:hover:before{width:14px}
+.cl{display:flex;gap:12px;align-items:flex-start;padding:8px 10px;margin:0 -10px;border-radius:12px;font-size:14.5px;transition:background .3s,color .3s,transform .3s}
+.cl .ic{width:18px;height:18px;margin-top:3px;color:var(--sky);transition:color .3s}
+a.cl:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(4px)}a.cl:hover .ic{color:var(--amb)}
+.socials{display:flex;gap:10px;margin-top:24px}
+.socials a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.08);color:#fff;transition:background .3s,transform .3s,color .3s}
+.socials a .ic{width:19px;height:19px}
+.socials a:hover{background:var(--amb);color:var(--navy2);transform:translateY(-5px) rotate(-6deg)}
+.fbar{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13.5px;position:relative}
+.fbar nav{display:flex;gap:22px}.fbar a{transition:color .25s}.fbar a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+/* 404 */
+.nf{padding:70px 0 100px;text-align:center}
+.nf .media{max-width:560px;margin:0 auto 34px}
+.n404{font-family:var(--fd);font-weight:800;font-size:clamp(88px,15vw,170px);line-height:.9;color:var(--navy);letter-spacing:-.05em}
+.nf h1{font-size:clamp(26px,3vw,36px);margin:12px 0}.nf p{color:var(--mut);max-width:520px;margin:0 auto}.nf .actions{justify-content:center}
+/* responsive */
+@media(max-width:1024px){.g4{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr 1fr;gap:36px}.split{gap:40px}.cta{padding:48px}}
+@media(max-width:860px){
+.navlinks,.nav-cta{display:none}.menu-btn{display:flex}.nav{height:66px}
+.hero{padding:36px 0 110px}.hero-grid,.split,.phero-grid{grid-template-columns:1fr;gap:34px}
+.split.rev .media{order:0}
+.bf1{left:10px;top:14px}.bf2{right:10px;bottom:14px}
+.tracker{padding:22px}.tracker-row{grid-template-columns:1fr}.tracker .btn{width:100%}
+.g3{grid-template-columns:1fr 1fr}.proc{grid-template-columns:1fr 1fr;gap:34px 18px}.proc:before{display:none}
+.head{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:32px}
+.section{padding:70px 0}.cta{flex-direction:column;align-items:flex-start;padding:38px 28px;border-radius:24px}
+.phero{padding:36px 0 50px}.phero .media{max-height:none}
+}
+@media(max-width:600px){
+.statbar{grid-template-columns:1fr 1fr}.st{border-bottom:1px solid var(--line)}
+body{font-size:15.5px}.g4,.g3,.g2,.row2{grid-template-columns:1fr}
+.hero-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.fact b{font-size:24px}.fact span{font-size:12.5px;display:block}
+.steps-line{grid-template-columns:1fr;gap:6px}.sl{text-align:left;padding:0 0 0 34px;line-height:20px;min-height:26px}.sl:before{display:none}.sl:after{left:0;top:2px;margin:0}
+.gallery{grid-template-columns:1fr;grid-auto-rows:210px}.gallery .media:first-child{grid-column:auto;grid-row:auto}
+.gallery figcaption{transform:none}
+.foot{grid-template-columns:1fr;padding:54px 0 34px}.fbar{flex-direction:column}
+.proc{grid-template-columns:1fr}.formcard{padding:24px}.badge-float{display:none}
+.actions .btn{flex:1 1 100%}
+.feat:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+body{background:#F2F6FD}
+.dash{min-height:100vh}
+.side{position:fixed;left:0;top:0;bottom:0;width:272px;background:#fff;border-right:1px solid var(--line);z-index:60;display:flex;flex-direction:column;padding:20px 14px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.side-top{display:flex;align-items:center;justify-content:space-between;padding:4px 10px 22px}
+.side-top img{height:32px;width:auto}
+.side-x{display:none;width:40px;height:40px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--navy);align-items:center;justify-content:center;cursor:pointer;transition:background .25s}.side-x:hover{background:var(--ice)}
+.side nav{display:grid;gap:3px;overflow:auto;flex:1;padding-right:2px}
+.si{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:0;background:transparent;font-weight:600;font-size:14.5px;color:var(--mut);cursor:pointer;text-align:left;position:relative;transition:background .25s,color .25s,transform .25s}
+.si .ic{width:20px;height:20px}
+.si:hover{background:var(--ice);color:var(--navy);transform:translateX(4px)}
+.si.active{background:var(--ice);color:var(--navy);font-weight:700}
+.si.active:before{content:"";position:absolute;left:-14px;top:10px;bottom:10px;width:4px;border-radius:0 4px 4px 0;background:var(--blue)}
+.si.active .ic{color:var(--blue)}
+.si.logout{color:#B03030;margin-top:8px}.si.logout:hover{background:#FBE3E3;color:#B03030}
+.ucard{margin-top:12px;padding:14px;border-radius:16px;background:linear-gradient(135deg,#0B2A6B,#154AC0);color:#fff;display:flex;gap:12px;align-items:center;transition:transform .3s,box-shadow .3s}
+.ucard:hover{transform:translateY(-3px);box-shadow:0 18px 30px -16px rgba(11,42,107,.7)}
+.ucard .av{background:rgba(255,255,255,.18);width:44px;height:44px;flex:none}
+.ucard b{display:block;font-size:14.5px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ucard small{display:block;font-size:12.5px;color:#C9D9F7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ucard .meta{min-width:0}
+.rolepill{display:inline-block;margin-bottom:3px;padding:2px 10px;border-radius:999px;background:rgba(255,255,255,.18);font-size:11.5px;font-weight:700}
+.scrim{position:fixed;inset:0;background:rgba(7,29,79,.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s;z-index:55}.scrim.open{opacity:1;pointer-events:auto}
+.top{position:sticky;top:0;z-index:40;margin-left:272px;height:74px;background:rgba(242,246,253,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 30px}
+.top-l{display:flex;align-items:center;gap:14px;min-width:0}
+.hamb{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--navy);align-items:center;justify-content:center;cursor:pointer;transition:background .25s,border-color .25s}.hamb:hover{background:var(--ice);border-color:var(--blue)}
+.top h1{font-size:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-r{display:flex;align-items:center;gap:14px}
+.iconbtn{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer;position:relative;transition:background .25s,transform .25s,border-color .25s}
+.iconbtn:hover{background:var(--ice);border-color:var(--sky);transform:translateY(-2px)}.iconbtn i{position:absolute;top:10px;right:11px;width:9px;height:9px;border-radius:50%;background:var(--amb);border:2px solid #fff}
+.usr{display:flex;align-items:center;gap:12px;padding:6px 14px 6px 6px;border-radius:16px;background:#fff;border:1px solid var(--line);transition:box-shadow .3s,border-color .3s,transform .3s;min-width:0}
+.usr:hover{border-color:var(--sky);box-shadow:var(--sh);transform:translateY(-2px)}
+.usr .av{width:42px;height:42px;border-radius:12px}
+.usr .t{min-width:0;line-height:1.25}.usr b{display:block;font-size:14.5px;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+.usr .t span{display:block;font-size:12.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+.usr .t .r{color:var(--blue);font-weight:700}
+.main{margin-left:272px;padding:30px}
+.dsec{display:none}.dsec.active{display:block;animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.mu{display:none;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:-6px 0 18px}.mu .av{width:44px;height:44px;border-radius:12px;flex:none}.mu div:last-child{min-width:0}.mu b{display:block;color:var(--navy);font-size:15px}.mu span{display:block;font-size:13px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mu i{font-style:normal;color:var(--blue);font-weight:700}.mu em{font-style:normal}
+.welcome{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.welcome h2{font-size:clamp(22px,2.6vw,30px)}.welcome p{color:var(--mut);margin-top:4px}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.metric{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.metric:hover{transform:translateY(-6px);box-shadow:var(--shh);border-color:var(--sky)}
+.metric span{font-size:13.5px;color:var(--mut);font-weight:600}.metric b{display:block;font-family:var(--fd);font-size:28px;color:var(--navy);margin:6px 0 2px;letter-spacing:-.03em}
+.metric em{font-style:normal;font-size:12.5px;font-weight:700;color:var(--grn)}
+.dgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:16px;margin-top:16px}
+.dcard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;transition:box-shadow .3s,border-color .3s}
+.dcard:hover{box-shadow:var(--sh);border-color:#C9DAF7}
+.dcard h3{font-size:17px;margin-bottom:4px}.dcard .s{color:var(--mut);font-size:13.5px}
+.bars{display:flex;align-items:flex-end;gap:12px;height:170px;margin-top:22px}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end;position:relative}
+.bar i{display:block;width:100%;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,var(--blue),#6EA0F5);transition:filter .25s,transform .25s;transform-origin:bottom}
+.bar:hover i{filter:brightness(.88);transform:scaleY(1.04)}
+.bar span{font-size:12px;color:var(--mut)}
+.bar:after{content:attr(data-v);position:absolute;top:-4px;left:50%;transform:translate(-50%,-100%);background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:8px;opacity:0;transition:opacity .2s;pointer-events:none}
+.bar:hover:after{opacity:1}
+.donut{display:grid;place-items:center;margin:20px 0 14px}
+.donut div{width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--blue) 0 68%,var(--sky) 68% 90%,var(--amb) 90% 100%);display:grid;place-items:center;transition:transform .4s}
+.donut div:hover{transform:rotate(8deg) scale(1.04)}
+.donut div:after{content:"68%";width:104px;height:104px;border-radius:50%;background:#fff;display:grid;place-items:center;font-family:var(--fd);font-weight:700;font-size:24px;color:var(--navy)}
+.legend{display:grid;gap:7px;font-size:13.5px;color:var(--mut)}.legend span{display:flex;align-items:center;gap:8px}.legend i{width:10px;height:10px;border-radius:3px}
+.acts{display:grid;gap:4px;margin-top:14px}
+.act{display:flex;gap:12px;padding:10px;margin:0 -10px;border-radius:12px;font-size:14px;transition:background .25s,transform .25s}
+.act:hover{background:var(--ice);transform:translateX(4px)}
+.act i{width:34px;height:34px;border-radius:10px;background:var(--ice);color:var(--blue);display:grid;place-items:center;flex:none}.act i .ic{width:17px;height:17px}.act b{display:block;color:var(--navy);font-size:14px}.act span{color:var(--mut);font-size:12.5px}
+.tbar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.search{position:relative;flex:1;min-width:200px;max-width:380px}.search .ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--mut)}.search .input{padding-left:42px}
+.rep3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px}
+.mini{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.mini:hover{transform:translateY(-5px);box-shadow:var(--sh);border-color:var(--sky)}.mini span{color:var(--mut);font-size:13.5px}.mini b{display:block;font-family:var(--fd);font-size:24px;color:var(--navy);margin-top:4px}
+.empty{display:none;padding:28px;text-align:center;color:var(--mut)}
+.prof{display:grid;grid-template-columns:320px 1fr;gap:16px;max-width:980px}
+.pcard{text-align:center;background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px 24px}
+.pcard .av{width:96px;height:96px;font-size:36px;margin:0 auto 16px;border-radius:26px}
+.pcard h2{font-size:22px}.pcard .rolepill2{display:inline-block;margin-top:8px;padding:5px 14px;border-radius:999px;background:var(--ice);color:var(--blue);font-weight:700;font-size:13.5px}
+.plist{display:grid}.prow{display:flex;gap:16px;align-items:center;padding:16px 10px;margin:0 -10px;border-bottom:1px solid var(--line);border-radius:12px;transition:background .25s}
+.prow:last-child{border:0}.prow:hover{background:var(--ice)}.prow .ico{width:44px;height:44px;border-radius:12px}.prow .ico .ic{width:20px;height:20px}
+.prow span{display:block;font-size:12.5px;color:var(--mut)}.prow b{font-size:15.5px;color:var(--navy);word-break:break-all}
+@media(max-width:1180px){.metrics{grid-template-columns:repeat(3,1fr)}.dgrid{grid-template-columns:1fr 1fr}.dgrid .dcard:first-child{grid-column:1/-1}.usr .t .em{display:none}}
+@media(max-width:900px){
+.side{transform:translateX(-100%);visibility:hidden}.side.open{transform:none;visibility:visible;box-shadow:20px 0 50px -20px rgba(7,29,79,.45)}.side-x{display:flex}
+.top,.main{margin-left:0}.hamb{display:flex}.top{padding:0 16px}.main{padding:20px 16px 40px}
+.prof{grid-template-columns:1fr}.rep3{grid-template-columns:1fr}
+}
+@media(max-width:640px){.mu{display:flex}.metrics{grid-template-columns:1fr 1fr}.dgrid{grid-template-columns:1fr}.usr{padding:5px}.usr .t{display:none}.top h1{font-size:17px}.bars{gap:7px}.iconbtn{width:40px;height:40px}.metric b{font-size:23px}}
+@media(max-width:380px){.metrics{grid-template-columns:1fr}}
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================================
+       ICON SPRITE
+       Use an icon anywhere with:
+         <svg class="ic" aria-hidden="true"><use href="#i-NAME"/></svg>
+       To change an icon, edit only its <symbol> below.
+       ========================================================== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M3 6h18M3 12h18M3 18h18"/>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5"/>
+    </symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+      <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+      <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+      <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+    </symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="12" rx="2"/>
+      <path d="M2 20h20"/>
+    </symbol>
+    <symbol id="i-screen" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="12" rx="2"/>
+      <path d="M9 20h6M12 16v4"/>
+    </symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24">
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+      <rect x="8" y="2" width="8" height="4" rx="1"/>
+    </symbol>
+    <symbol id="i-users" viewBox="0 0 24 24">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>
+    </symbol>
+    <symbol id="i-history" viewBox="0 0 24 24">
+      <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/>
+      <path d="M3 3v5h5M12 7v5l3 2"/>
+    </symbol>
+    <symbol id="i-message" viewBox="0 0 24 24">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+      <circle cx="12" cy="7" r="4"/>
+    </symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>
+    </symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24">
+      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/>
+    </symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24">
+      <rect x="6" y="6" width="12" height="12" rx="2"/>
+      <rect x="9" y="9" width="6" height="6"/>
+      <path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/>
+      <path d="M21 21l-4.3-4.3"/>
+    </symbol>
+    <symbol id="i-award" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="6"/>
+      <path d="M15.5 13.5L17 22l-5-3-5 3 1.5-8.5"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="M22 6l-10 7L2 6"/>
+    </symbol>
+  </svg>
+
+
+  <div class="dash">
+
+    <!-- ========================================================
+         SIDEBAR
+         Each .si button with data-s="sN" shows the section with id="sN".
+         ======================================================== -->
+    <aside class="side" id="side" aria-label="Dashboard navigation">
+
+      <div class="side-top">
+        <a>
+          <img src="./images/logo-navyblue.webp" alt="Stackly logo" width="84" height="32">
+        </a>
+        <button class="side-x" id="sx" aria-label="Close menu">
+          <svg class="ic" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+
+      <nav>
+        <button class="si active" data-s="s0">
+          <svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg><span>Overview</span>
+        </button>
+        <button class="si" data-s="s1">
+          <svg class="ic" aria-hidden="true"><use href="#i-laptop"/></svg><span>My Repairs</span>
+        </button>
+        <button class="si" data-s="s2">
+          <svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg><span>Assigned Jobs</span>
+        </button>
+        <button class="si" data-s="s3">
+          <svg class="ic" aria-hidden="true"><use href="#i-users"/></svg><span>Customers</span>
+        </button>
+        <button class="si" data-s="s4">
+          <svg class="ic" aria-hidden="true"><use href="#i-history"/></svg><span>Service History</span>
+        </button>
+        <button class="si" data-s="s5">
+          <svg class="ic" aria-hidden="true"><use href="#i-message"/></svg><span>Messages</span>
+        </button>
+        <button class="si" data-s="s6">
+          <svg class="ic" aria-hidden="true"><use href="#i-user"/></svg><span>Profile</span>
+        </button>
+        <button class="si logout" id="lo">
+          <svg class="ic" aria-hidden="true"><use href="#i-logout"/></svg><span>Logout</span>
+        </button>
+      </nav>
+
+      <!-- Logged-in user card (filled by JavaScript) -->
+      <div class="ucard">
+        <div class="av" id="sAv">U</div>
+        <div class="meta">
+          <span class="rolepill">Technician</span>
+          <b id="sName">User</b>
+          <small id="sEmail"></small>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Dark overlay behind the mobile sidebar -->
+    <div class="scrim" id="scrim"></div>
+
+
+    <!-- ========================================================
+         TOP BAR
+         ======================================================== -->
+    <header class="top">
+
+      <div class="top-l">
+        <button class="hamb" id="so" aria-label="Open menu">
+          <svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+        <h1 id="pageTitle">Overview</h1>
+      </div>
+
+      <div class="top-r">
+        <button class="iconbtn" aria-label="Notifications">
+          <svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg>
+          <i></i>
+        </button>
+
+        <div class="usr">
+          <div class="av" id="tAv">U</div>
+          <div class="t">
+            <b id="tName">User</b>
+            <span class="r" id="tRole">Technician</span>
+            <span class="em" id="tEmail"></span>
+          </div>
+        </div>
+      </div>
+
+    </header>
+
+
+    <main class="main">
+
+      <!-- ======================================================
+           SECTION s0: OVERVIEW
+           ====================================================== -->
+      <section class="dsec active" id="s0">
+
+        <div class="welcome">
+          <div>
+            <h2>Welcome back, <span class="uFirst">there</span></h2>
+            <p>Your jobs for today at a glance.</p>
+          </div>
+          <a class="btn sm" href="technician-error.html">
+            <svg class="ic" aria-hidden="true"><use href="#i-screen"/></svg>View website
+          </a>
+        </div>
+
+        <!-- User card shown only on small phones -->
+        <div class="mu">
+          <div class="av" id="mAv">U</div>
+          <div>
+            <b id="mName">User</b>
+            <span><i id="mRole">Technician</i> &middot; <em id="mEmail"></em></span>
+          </div>
+        </div>
+
+        <!-- Metric cards -->
+        <div class="metrics">
+          <div class="metric"><span>Total assigned</span><b>12</b><em>2 new today</em></div>
+          <div class="metric"><span>Pending</span><b>3</b><em>Start soon</em></div>
+          <div class="metric"><span>In progress</span><b>5</b><em>On schedule</em></div>
+          <div class="metric"><span>Completed</span><b>4</b><em>This week</em></div>
+          <div class="metric"><span>This month</span><b>₹42,600</b><em>+6% vs last</em></div>
+        </div>
+
+        <!-- Chart, donut, updates -->
+        <div class="dgrid">
+
+          <!-- Bar chart: bar height is the % in style, tooltip text is data-v -->
+          <div class="dcard">
+            <h3>Service activity</h3>
+            <p class="s">Repairs handled this week</p>
+            <div class="bars">
+              <div class="bar" data-v="12 repairs"><i style="height:46%"></i><span>Mon</span></div>
+              <div class="bar" data-v="16 repairs"><i style="height:62%"></i><span>Tue</span></div>
+              <div class="bar" data-v="14 repairs"><i style="height:54%"></i><span>Wed</span></div>
+              <div class="bar" data-v="20 repairs"><i style="height:78%"></i><span>Thu</span></div>
+              <div class="bar" data-v="24 repairs"><i style="height:92%"></i><span>Fri</span></div>
+              <div class="bar" data-v="18 repairs"><i style="height:70%"></i><span>Sat</span></div>
+              <div class="bar" data-v="8 repairs"><i style="height:30%"></i><span>Sun</span></div>
+            </div>
+          </div>
+
+          <!-- Donut chart (percentages are in the CSS .donut div) -->
+          <div class="dcard">
+            <h3>Current queue</h3>
+            <p class="s">Share of repairs by stage</p>
+            <div class="donut"><div></div></div>
+            <div class="legend">
+              <span><i style="background:var(--blue)"></i>Completed 68%</span>
+              <span><i style="background:var(--sky)"></i>In progress 22%</span>
+              <span><i style="background:var(--amb)"></i>Pending 10%</span>
+            </div>
+          </div>
+
+          <!-- Latest updates -->
+          <div class="dcard">
+            <h3>Latest updates</h3>
+            <p class="s">What happened recently</p>
+            <div class="acts">
+
+              <div class="act">
+                <i><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></i>
+                <div><b>Laptop repair marked Testing</b><span>5 minutes ago</span></div>
+              </div>
+
+              <div class="act">
+                <i><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></i>
+                <div><b>New service request received</b><span>32 minutes ago</span></div>
+              </div>
+
+              <div class="act">
+                <i><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg></i>
+                <div><b>SSD upgrade completed</b><span>2 hours ago</span></div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Recent requests table -->
+        <div class="dcard" style="margin-top:16px">
+          <h3 style="margin-bottom:16px">Recent service requests</h3>
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr><th>Device</th><th>Customer</th><th>Issue</th><th>Status</th><th>Priority</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Laptop</td><td>Ramesh Kumar</td><td>Screen issue</td><td><span class="pill p-blue">In Progress</span></td><td>High</td></tr>
+                <tr><td>Desktop</td><td>Priya S</td><td>No display</td><td><span class="pill p-amb">Pending</span></td><td>Medium</td></tr>
+                <tr><td>Laptop</td><td>Suresh B</td><td>Battery issue</td><td><span class="pill p-grn">Completed</span></td><td>Low</td></tr>
+                <tr><td>Desktop</td><td>Lakshmi</td><td>Overheating</td><td><span class="pill p-navy">Testing</span></td><td>Medium</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="empty">No matching records.</div>
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION s1: MY REPAIRS
+           ====================================================== -->
+      <section class="dsec" id="s1">
+
+        <div class="welcome">
+          <div>
+            <h2>My Repairs</h2>
+            <p>Repairs you are working on right now.</p>
+          </div>
+        </div>
+
+        <div class="rep3">
+          <div class="mini"><span>In progress</span><b>5</b></div>
+          <div class="mini"><span>Due today</span><b>2</b></div>
+          <div class="mini"><span>Waiting for parts</span><b>1</b></div>
+        </div>
+
+        <div class="dcard">
+          <div class="tbar">
+            <div class="search">
+              <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+              <input class="input tsearch" placeholder="Search my repairs" aria-label="Search My Repairs">
+            </div>
+            <button onclick="window.location.href='technician-error.html'" class="btn sm" type="button">
+              <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Update status
+            </button>
+          </div>
+
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr><th>Ticket</th><th>Device</th><th>Issue</th><th>Stage</th><th>Due</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>CSC-2026-1048</td><td>Laptop</td><td>Screen issue</td><td><span class="pill p-navy">Testing</span></td><td>Today</td></tr>
+                <tr><td>CSC-2026-1046</td><td>Laptop</td><td>Not charging</td><td><span class="pill p-navy">Diagnosing</span></td><td>Tomorrow</td></tr>
+                <tr><td>CSC-2026-1041</td><td>Desktop</td><td>Overheating</td><td><span class="pill p-blue">Repairing</span></td><td>2 days</td></tr>
+                <tr><td>CSC-2026-1039</td><td>Laptop</td><td>Slow performance</td><td><span class="pill p-blue">In Progress</span></td><td>2 days</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="empty">No matching records.</div>
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION s2: ASSIGNED JOBS
+           ====================================================== -->
+      <section class="dsec" id="s2">
+
+        <div class="welcome">
+          <div>
+            <h2>Assigned Jobs</h2>
+            <p>New jobs assigned to you by the admin.</p>
+          </div>
+        </div>
+
+        <div class="rep3">
+          <div class="mini"><span>Assigned</span><b>12</b></div>
+          <div class="mini"><span>Accepted</span><b>9</b></div>
+          <div class="mini"><span>Awaiting you</span><b>3</b></div>
+        </div>
+
+        <div class="dcard">
+          <div class="tbar">
+            <div class="search">
+              <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+              <input class="input tsearch" placeholder="Search assigned jobs" aria-label="Search Assigned Jobs">
+            </div>
+            <button onclick="window.location.href='technician-error.html'" class="btn sm" type="button">
+              <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Accept job
+            </button>
+          </div>
+
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr><th>Job</th><th>Customer</th><th>Device</th><th>Assigned</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>JB-221</td><td>Ramesh Kumar</td><td>Laptop</td><td>Today</td><td><span class="pill p-blue">New</span></td></tr>
+                <tr><td>JB-220</td><td>Priya S</td><td>Desktop</td><td>Today</td><td><span class="pill p-amb">Pending</span></td></tr>
+                <tr><td>JB-219</td><td>Anil Verma</td><td>Laptop</td><td>Yesterday</td><td><span class="pill p-blue">In Progress</span></td></tr>
+                <tr><td>JB-218</td><td>Meena R</td><td>Printer</td><td>Yesterday</td><td><span class="pill p-blue">In Progress</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="empty">No matching records.</div>
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION s3: CUSTOMERS
+           ====================================================== -->
+      <section class="dsec" id="s3">
+
+        <div class="welcome">
+          <div>
+            <h2>Customers</h2>
+            <p>Customers linked to your jobs.</p>
+          </div>
+        </div>
+
+        <div class="rep3">
+          <div class="mini"><span>Customers</span><b>4</b></div>
+          <div class="mini"><span>Repeat customers</span><b>2</b></div>
+          <div class="mini"><span>Follow-ups</span><b>1</b></div>
+        </div>
+
+        <div class="dcard">
+          <div class="tbar">
+            <div class="search">
+              <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+              <input class="input tsearch" placeholder="Search customers" aria-label="Search Customers">
+            </div>
+            <button onclick="window.location.href='technician-error.html'" class="btn sm" type="button">
+              <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Add note
+            </button>
+          </div>
+
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr><th>Name</th><th>Phone</th><th>Device</th><th>Open jobs</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Ramesh Kumar</td><td>98765 11001</td><td>Laptop</td><td>1</td></tr>
+                <tr><td>Priya S</td><td>98765 11002</td><td>Desktop</td><td>1</td></tr>
+                <tr><td>Anil Verma</td><td>98765 11005</td><td>Laptop</td><td>1</td></tr>
+                <tr><td>Meena R</td><td>98765 11006</td><td>Printer</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="empty">No matching records.</div>
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION s4: SERVICE HISTORY
+           ====================================================== -->
+      <section class="dsec" id="s4">
+
+        <div class="welcome">
+          <div>
+            <h2>Service History</h2>
+            <p>Repairs you have completed.</p>
+          </div>
+        </div>
+
+        <div class="rep3">
+          <div class="mini"><span>Completed this month</span><b>18</b></div>
+          <div class="mini"><span>Avg. repair time</span><b>1.6 days</b></div>
+          <div class="mini"><span>Rework rate</span><b>2%</b></div>
+        </div>
+
+        <div class="dcard">
+          <div class="tbar">
+            <div class="search">
+              <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+              <input class="input tsearch" placeholder="Search service history" aria-label="Search Service History">
+            </div>
+            <button onclick="window.location.href='technician-error.html'" class="btn sm" type="button">
+              <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Export
+            </button>
+          </div>
+
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr><th>Ticket</th><th>Device</th><th>Issue</th><th>Completed</th><th>Result</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>CSC-2026-1030</td><td>Laptop</td><td>Battery issue</td><td>12 Sep</td><td><span class="pill p-grn">Delivered</span></td></tr>
+                <tr><td>CSC-2026-1028</td><td>Desktop</td><td>No display</td><td>10 Sep</td><td><span class="pill p-grn">Delivered</span></td></tr>
+                <tr><td>CSC-2026-1024</td><td>Laptop</td><td>Keyboard repair</td><td>07 Sep</td><td><span class="pill p-grn">Delivered</span></td></tr>
+                <tr><td>CSC-2026-1019</td><td>Laptop</td><td>SSD upgrade</td><td>03 Sep</td><td><span class="pill p-grn">Delivered</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="empty">No matching records.</div>
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION s5: MESSAGES
+           ====================================================== -->
+      <section class="dsec" id="s5">
+
+        <div class="welcome">
+          <div>
+            <h2>Messages</h2>
+            <p>Notes and messages from the service desk.</p>
+          </div>
+        </div>
+
+        <div class="rep3">
+          <div class="mini"><span>Unread</span><b>2</b></div>
+          <div class="mini"><span>Today</span><b>3</b></div>
+          <div class="mini"><span>Flagged</span><b>1</b></div>
+        </div>
+
+        <div class="dcard">
+          <div class="tbar">
+            <div class="search">
+              <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+              <input class="input tsearch" placeholder="Search messages" aria-label="Search Messages">
+            </div>
+            <button onclick="window.location.href='technician-error.html'" class="btn sm" type="button">
+              <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>New message
+            </button>
+          </div>
+
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr><th>From</th><th>Subject</th><th>Received</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Service desk</td><td>Customer approved the quote for JB-221</td><td>15 min ago</td><td><span class="pill p-blue">New</span></td></tr>
+                <tr><td>Admin</td><td>Please prioritise CSC-2026-1048</td><td>1 hour ago</td><td><span class="pill p-blue">New</span></td></tr>
+                <tr><td>Samira Khan</td><td>Parts arrived for CSC-2026-1041</td><td>Yesterday</td><td><span class="pill p-navy">Read</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="empty">No matching records.</div>
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION s6: PROFILE
+           ====================================================== -->
+      <section class="dsec" id="s6">
+
+        <div class="welcome">
+          <div>
+            <h2>Profile</h2>
+            <p>The account you are logged in with.</p>
+          </div>
+        </div>
+
+        <div class="prof">
+
+          <div class="pcard">
+            <div class="av" id="pAv">U</div>
+            <h2 id="pName">User</h2>
+            <span class="rolepill2" id="pRoleTag">Technician</span>
+          </div>
+
+          <div class="dcard">
+            <h3>Account details</h3>
+            <div class="plist">
+
+              <div class="prow">
+                <div class="ico"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></div>
+                <div><span>Name</span><b id="pName2">User</b></div>
+              </div>
+
+              <div class="prow">
+                <div class="ico"><svg class="ic" aria-hidden="true"><use href="#i-award"/></svg></div>
+                <div><span>Role</span><b id="pRole">Technician</b></div>
+              </div>
+
+              <div class="prow">
+                <div class="ico"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg></div>
+                <div><span>Email</span><b id="pEmail">-</b></div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+
+  <!-- ==========================================================
+       JAVASCRIPT
+       1. Login check (only a logged-in Technician can see this page)
+       2. Fill in the user's name / email / initial
+       3. Mobile sidebar open / close
+       4. Switch between dashboard sections
+       5. Logout
+       6. Table search boxes
+       ========================================================== -->
+  <script>
+    /* Settings ------------------------------------------------------ */
+    var ROLE = 'Technician';
+
+    // Page title shown in the top bar for each section
+    var TITLES = {
+      s0: 'Overview',
+      s1: 'My Repairs',
+      s2: 'Assigned Jobs',
+      s3: 'Customers',
+      s4: 'Service History',
+      s5: 'Messages',
+      s6: 'Profile'
+    };
+
+    // Set the text of an element by id (safe if the element is missing)
+    function setText(id, value) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+
+    /* 1. Login check ------------------------------------------------ */
+    // Not logged in, or logged in with a different role: go to login page
+    if (localStorage.getItem('isLoggedIn') !== 'true' ||
+        localStorage.getItem('userRole') !== ROLE) {
+      location.href = 'login.html';
+    }
+
+
+    /* 2. Fill in user details --------------------------------------- */
+    var userName  = localStorage.getItem('userName') || 'User';
+    var userEmail = localStorage.getItem('userEmail') || '';
+    var initial   = userName.trim().charAt(0).toUpperCase() || 'U';
+
+    // Avatar letter (sidebar, top bar, profile, mobile card)
+    ['sAv', 'tAv', 'pAv', 'mAv'].forEach(function (id) {
+      setText(id, initial);
+    });
+
+    // Name
+    ['sName', 'tName', 'pName', 'pName2', 'mName'].forEach(function (id) {
+      setText(id, userName);
+    });
+
+    // Email
+    ['sEmail', 'tEmail', 'pEmail', 'mEmail'].forEach(function (id) {
+      setText(id, userEmail);
+    });
+
+    // "Welcome back, <first name>"
+    document.querySelectorAll('.uFirst').forEach(function (el) {
+      el.textContent = userName.split(' ')[0];
+    });
+
+
+    /* 3. Mobile sidebar --------------------------------------------- */
+    var sidebar = document.getElementById('side');
+    var scrim   = document.getElementById('scrim');
+
+    function setSidebar(isOpen) {
+      sidebar.classList.toggle('open', isOpen);
+      scrim.classList.toggle('open', isOpen);
+    }
+
+    document.getElementById('so').addEventListener('click', function () { setSidebar(true);  });
+    document.getElementById('sx').addEventListener('click', function () { setSidebar(false); });
+    scrim.addEventListener('click', function () { setSidebar(false); });
+
+    addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setSidebar(false);
+    });
+
+
+    /* 4. Switch between sections ------------------------------------ */
+    document.querySelectorAll('.si[data-s]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+
+        // Highlight the clicked sidebar button
+        document.querySelectorAll('.si').forEach(function (other) {
+          other.classList.remove('active');
+        });
+        btn.classList.add('active');
+
+        // Show only the matching section
+        document.querySelectorAll('.dsec').forEach(function (section) {
+          section.classList.remove('active');
+        });
+        document.getElementById(btn.dataset.s).classList.add('active');
+
+        // Update the page title, close the mobile sidebar, scroll to top
+        setText('pageTitle', TITLES[btn.dataset.s]);
+        setSidebar(false);
+        scrollTo(0, 0);
+      });
+    });
+
+
+    /* 5. Logout ----------------------------------------------------- */
+    document.getElementById('lo').addEventListener('click', function () {
+      ['isLoggedIn', 'userRole', 'userEmail', 'userName'].forEach(function (key) {
+        localStorage.removeItem(key);
+      });
+      location.href = 'login.html';
+    });
+
+
+    /* 6. Table search ----------------------------------------------- */
+    // Each .tsearch input filters the table rows inside its own card
+    document.querySelectorAll('.tsearch').forEach(function (input) {
+      input.addEventListener('input', function () {
+
+        var card    = input.closest('.dcard');
+        var query   = input.value.toLowerCase().trim();
+        var rows    = card.querySelectorAll('tbody tr');
+        var visible = 0;
+
+        rows.forEach(function (row) {
+          var matches = row.textContent.toLowerCase().indexOf(query) > -1;
+          row.style.display = matches ? '' : 'none';
+          if (matches) visible++;
+        });
+
+        // Show "No matching records." when nothing matches
+        card.querySelector('.empty').style.display = visible ? 'none' : 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>

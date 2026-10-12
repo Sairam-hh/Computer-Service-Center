@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact | Computer Service Center</title>
+  <meta name="description" content="Computer Service Center: laptop and desktop repair, data recovery, upgrades and networking.">
+  <meta name="theme-color" content="#0B2A6B">
+  <link rel="icon" type="image/webp" href="./images/logo-mark-navyblue.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+/* ===== Tokens & base ===== */
+:root{--bg:#F5F8FE;--ice:#EAF1FD;--ice2:#DCE8FB;--navy:#0B2A6B;--navy2:#071D4F;--blue:#1D5FE8;--sky:#8DB8FF;--ink:#0A1630;--mut:#54627F;--line:#DCE6F7;--amb:#F5A524;--grn:#1FA971;--sh:0 1px 2px rgba(11,42,107,.06),0 12px 32px -14px rgba(11,42,107,.20);--shh:0 2px 4px rgba(11,42,107,.06),0 26px 50px -18px rgba(11,42,107,.34);--fd:'Sora','Segoe UI',Arial,sans-serif;--fb:'Figtree','Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
+h1,h2,h3,h4{font-family:var(--fd);letter-spacing:-.02em;line-height:1.15;margin:0;color:var(--navy)}
+p{margin:0}
+.container{width:min(1180px,92%);margin-inline:auto}
+.ic{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid rgba(29,95,232,.45);outline-offset:3px;border-radius:8px}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ===== Buttons ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:12px;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font-weight:700;font-size:15px;cursor:pointer;transition:transform .25s,background .25s,box-shadow .25s,color .25s,border-color .25s;white-space:nowrap}
+.btn:hover{background:var(--navy);border-color:var(--navy);transform:translateY(-2px);box-shadow:0 14px 26px -12px rgba(11,42,107,.55)}
+.btn.white{background:#fff;color:var(--navy);border-color:#fff}
+.btn.white:hover{background:var(--amb);border-color:var(--amb);color:var(--navy2)}
+.btn.line{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn.line:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.btn.sm{padding:9px 16px;font-size:13.5px;border-radius:10px}
+.btn .ic{width:18px;height:18px;transition:transform .25s}.btn:hover .ic{transform:translateX(3px)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+
+/* ===== Header & mobile drawer ===== */
+.site-header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(16px);-webkit-backdrop-filter:saturate(1.4) blur(16px);border-bottom:1px solid transparent;transition:box-shadow .3s,border-color .3s}
+.site-header.scrolled{border-color:var(--line);box-shadow:0 10px 30px -20px rgba(11,42,107,.4)}
+.nav{height:74px;display:flex;align-items:center;gap:32px}
+.brand{display:flex;align-items:center;transition:transform .3s}.brand:hover{transform:scale(1.04)}
+.brand img{height:34px;width:auto}
+.navlinks{display:flex;gap:6px;margin-left:auto}
+.navlinks a{position:relative;padding:10px 16px;font-weight:600;font-size:15px;color:var(--mut);border-radius:10px;transition:color .25s,background .25s}
+.navlinks a:after{content:"";position:absolute;left:16px;right:16px;bottom:5px;height:2px;border-radius:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.navlinks a:hover{color:var(--navy);background:var(--ice)}
+.navlinks a:hover:after,.navlinks a.active:after{transform:scaleX(1)}
+.navlinks a.active{color:var(--navy)}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--navy);align-items:center;justify-content:center;cursor:pointer;transition:background .25s,border-color .25s}
+.menu-btn:hover{background:var(--ice);border-color:var(--blue)}
+.drawer-overlay{position:fixed;inset:0;background:rgba(7,29,79,.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s;z-index:70}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(340px,86%);background:#fff;z-index:80;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);padding:20px;display:flex;flex-direction:column;gap:6px;visibility:hidden}
+.drawer.open{transform:none;visibility:visible;box-shadow:-20px 0 50px -20px rgba(7,29,79,.4)}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.drawer-top img{height:30px;width:auto}
+.drawer a.dl{display:flex;align-items:center;justify-content:space-between;padding:14px;border-radius:12px;font-weight:600;color:var(--navy);transition:background .25s,padding .25s,color .25s}
+.drawer a.dl:hover,.drawer a.dl.active{background:var(--ice);padding-left:20px;color:var(--blue)}
+.drawer .btn{margin-top:14px}
+
+/* ===== Page hero (photo background) ===== */
+.phero{padding:84px 0 92px}
+.phero-grid{display:grid;grid-template-columns:1fr;gap:50px;align-items:center}
+.phero-grid>div{max-width:680px}
+.phero h1{font-size:clamp(34px,4.4vw,54px);letter-spacing:-.03em}
+.phero p.lead{margin-top:16px;font-size:18px;max-width:560px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:14px;margin-bottom:18px}
+.crumbs .ic{width:14px;height:14px}
+.pbg{position:relative;overflow:hidden;isolation:isolate;color:#fff;background:#071D4F center/cover no-repeat}
+.pbg>.bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.pbg::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,29,79,.93) 0%,rgba(7,29,79,.74) 48%,rgba(7,29,79,.38) 100%)}
+.pbg h1{color:#fff}.pbg p.lead{color:rgba(255,255,255,.86)}
+.pbg .crumbs,.pbg .crumbs a{color:rgba(255,255,255,.78)}.pbg .crumbs span{color:#fff}
+
+/* ===== Sections, grid, cards ===== */
+.section{padding:56px 0}.section.tight{padding:34px 0}.section.alt{background:#fff;border-block:1px solid var(--line)}
+.head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:44px}
+.head h2{font-size:clamp(28px,3.4vw,42px);font-weight:700}
+.head p{color:var(--mut);max-width:460px;font-size:16.5px}
+.grid{display:grid;gap:22px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+.card{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--sh);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;overflow:hidden}
+.card:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shh);border-color:var(--sky)}
+.card:hover:before{transform:scaleX(1)}
+.card h3{font-size:19px;margin:20px 0 8px}
+.card p{color:var(--mut);font-size:15px}
+.ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--ice);color:var(--blue);transition:background .3s,color .3s,transform .4s}
+.ico .ic{width:26px;height:26px}
+.card:hover .ico{background:var(--blue);color:#fff;transform:rotate(-6deg) scale(1.06)}
+
+/* ===== Split (image + text) ===== */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.media{position:relative;border-radius:26px;overflow:hidden;background:var(--ice);box-shadow:var(--shh);border:6px solid #fff}
+.media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.media:hover img{transform:scale(1.06)}
+.media.tall img{aspect-ratio:1200/857}
+.split h2{font-size:clamp(28px,3.2vw,40px);margin-bottom:16px}
+.split p.lead{color:var(--mut);font-size:17px}
+.feats{display:grid;gap:6px;margin-top:24px}
+.feat{display:flex;gap:16px;padding:14px 16px;border-radius:16px;border:1px solid transparent;transition:background .3s,border-color .3s,transform .3s}
+.feat:hover{background:#fff;border-color:var(--line);transform:translateX(8px);box-shadow:var(--sh)}
+.feat .ck{width:38px;height:38px;border-radius:12px;background:#E3F6EE;color:var(--grn);display:grid;place-items:center;flex:none;transition:background .3s,color .3s}
+.feat:hover .ck{background:var(--grn);color:#fff}
+.feat b{display:block;color:var(--navy);font-family:var(--fd);font-size:16px}.feat span{color:var(--mut);font-size:14.5px}
+
+/* ===== Contact cards (whole card is a link) ===== */
+a.card{display:block}
+
+/* ===== Contact form ===== */
+.input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;outline:0;transition:border-color .25s,box-shadow .25s,background .25s}
+.input:hover{border-color:var(--sky)}
+.input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(29,95,232,.12)}
+textarea.input{resize:vertical;min-height:130px}
+.group{margin-bottom:16px}.group label{display:block;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:7px}
+.err{display:block;color:#D64545;font-size:13px;min-height:18px;margin-top:5px}
+.okmsg{color:var(--grn);font-weight:600;font-size:14.5px;margin-top:12px}
+.formcard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:var(--sh)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mapbox{min-height:420px}.mapbox iframe{width:100%;height:100%;min-height:420px}
+
+/* ===== FAQ ===== */
+.faq{display:grid;gap:12px;max-width:860px;margin-inline:auto}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:16px;transition:border-color .3s,box-shadow .3s}
+.faq details:hover{border-color:var(--sky);box-shadow:var(--sh)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;justify-content:space-between;gap:20px;align-items:center;font-family:var(--fd);font-weight:600;color:var(--navy);font-size:16.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ic{transition:transform .3s;color:var(--blue)}.faq details[open] summary .ic{transform:rotate(45deg)}
+.faq details p{padding:0 24px 22px;color:var(--mut)}
+
+/* ===== Footer ===== */
+.site-footer{background:var(--navy2);color:#B9C8E6;position:relative;overflow:hidden}
+.site-footer:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(29,95,232,.16);right:-180px;top:-260px;pointer-events:none}
+.foot{display:grid;grid-template-columns:1.5fr 1fr 1.1fr 1.3fr;gap:44px;padding:72px 0 48px;position:relative}
+.foot img.flogo{height:38px;width:auto;margin-bottom:20px;transition:transform .3s}.foot img.flogo:hover{transform:scale(1.05)}
+.foot p{font-size:14.5px;line-height:1.7;max-width:330px}
+.foot h4{color:#fff;font-size:16px;margin-bottom:18px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.foot ul a{display:inline-flex;align-items:center;padding:5px 0;font-size:14.5px;transition:color .25s,padding .3s,gap .3s}
+.foot ul a:before{content:"";width:0;height:2px;background:var(--amb);transition:width .3s;border-radius:2px}
+.foot ul a:hover{color:#fff;padding-left:2px;gap:8px}.foot ul a:hover:before{width:14px}
+.cl{display:flex;gap:12px;align-items:flex-start;padding:8px 10px;margin:0 -10px;border-radius:12px;font-size:14.5px;transition:background .3s,color .3s,transform .3s}
+.cl .ic{width:18px;height:18px;margin-top:3px;color:var(--sky);transition:color .3s}
+a.cl:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(4px)}a.cl:hover .ic{color:var(--amb)}
+.socials{display:flex;gap:10px;margin-top:24px}
+.socials a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.08);color:#fff;transition:background .3s,transform .3s,color .3s}
+.socials a .ic{width:19px;height:19px}
+.socials a:hover{background:var(--amb);color:var(--navy2);transform:translateY(-5px) rotate(-6deg)}
+.fbar{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13.5px;position:relative}
+.fbar nav{display:flex;gap:22px}.fbar a{transition:color .25s}.fbar a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+
+/* ===== Responsive ===== */
+@media(max-width:1024px){.g4{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr 1fr;gap:36px}.split{gap:40px}}
+@media(max-width:860px){
+  .navlinks,.nav-cta{display:none}.menu-btn{display:flex}.nav{height:66px}
+  .split{grid-template-columns:1fr;gap:34px}
+  .g3{grid-template-columns:1fr 1fr}
+  .head{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:32px}
+  .section{padding:42px 0}
+}
+@media(max-width:640px){.phero{padding:56px 0 60px}}
+@media(max-width:600px){
+  body{font-size:15.5px}
+  .g4,.g3,.row2{grid-template-columns:1fr}.formcard{padding:24px}
+  .foot{grid-template-columns:1fr;padding:54px 0 34px}.fbar{flex-direction:column}
+  .actions .btn{flex:1 1 100%}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Icon sprite: define once, reuse with <svg class="ic"><use href="#i-name"/></svg> ===== -->
+  <svg class="sprite" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5L17 22l-5-3-5 3 1.5-8.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  </svg>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Computer Service Center, home">
+        <img src="./images/logo-navyblue.webp" alt="Stackly logo" width="90" height="34">
+      </a>
+
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="repairs.html">Repairs</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+
+      <div class="nav-cta"><a class="btn sm" href="login.html">Login</a></div>
+
+      <button class="menu-btn" id="menuOpen" aria-label="Open menu" aria-expanded="false">
+        <svg class="ic"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Mobile drawer ===== -->
+  <div class="drawer-overlay" id="ov"></div>
+  <aside class="drawer" id="drawer" aria-label="Mobile navigation">
+    <div class="drawer-top">
+      <img src="./images/logo-navyblue.webp" alt="Stackly logo" width="79" height="30">
+      <button class="menu-btn" id="menuClose" style="display:flex;margin:0" aria-label="Close menu">
+        <svg class="ic"><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <a class="dl" href="index.html">Home<svg class="ic"><use href="#i-chev"/></svg></a>
+    <a class="dl" href="services.html">Services<svg class="ic"><use href="#i-chev"/></svg></a>
+    <a class="dl" href="repairs.html">Repairs<svg class="ic"><use href="#i-chev"/></svg></a>
+    <a class="dl" href="about.html">About<svg class="ic"><use href="#i-chev"/></svg></a>
+    <a class="dl active" href="contact.html">Contact<svg class="ic"><use href="#i-chev"/></svg></a>
+    <a class="btn" href="login.html">Login</a>
+  </aside>
+
+  <main id="main">
+
+    <!-- ===== Hero (photo background) ===== -->
+    <section class="phero pbg">
+      <img class="bgimg" src="./images/photos/1765256931521-0f843b7b3100.jpg" alt="" fetchpriority="high">
+      <div class="container phero-grid">
+        <div>
+          <div class="crumbs">
+            <a href="index.html">Home</a>
+            <svg class="ic"><use href="#i-chev"/></svg>
+            <span>Contact</span>
+          </div>
+          <h1>Get in touch.</h1>
+          <p class="lead">We are here to help with computer repairs, technical support and service enquiries.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact details ===== -->
+    <section class="section tight">
+      <div class="container">
+        <div class="grid g4">
+          <a class="card" >
+            <div class="ico"><svg class="ic"><use href="#i-pin"/></svg></div>
+            <h3>Visit us</h3>
+            <p>Computer Service Center, Visakhapatnam, Andhra Pradesh</p>
+          </a>
+          <a class="card" >
+            <div class="ico"><svg class="ic"><use href="#i-phone"/></svg></div>
+            <h3>Call us</h3>
+            <p>+91 98765 43210</p>
+          </a>
+          <a class="card" >
+            <div class="ico"><svg class="ic"><use href="#i-mail"/></svg></div>
+            <h3>Email us</h3>
+            <p>support@computerservice.in</p>
+          </a>
+          <a class="card" >
+            <div class="ico"><svg class="ic"><use href="#i-clock"/></svg></div>
+            <h3>Business hours</h3>
+            <p>Mon–Sat, 9:00 AM – 6:00 PM</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Form + map ===== -->
+    <section class="section">
+      <div class="container split">
+
+        <div class="formcard">
+          <h2 style="font-size:30px;margin-bottom:6px">Let’s talk about your device.</h2>
+          <p style="color:var(--mut);margin-bottom:24px">Share a few details and we will reply with the next step.</p>
+
+          <form id="cf" novalidate>
+            <div class="group">
+              <label for="cn">Full name</label>
+              <input id="cn" class="input" autocomplete="name">
+              <span id="ne" class="err"></span>
+            </div>
+
+            <div class="row2">
+              <div class="group">
+                <label for="ce">Email</label>
+                <input id="ce" class="input" type="email" autocomplete="email">
+                <span id="ee" class="err"></span>
+              </div>
+              <div class="group">
+                <label for="cp">Phone</label>
+                <input id="cp" class="input" inputmode="numeric" autocomplete="tel">
+                <span id="pe" class="err"></span>
+              </div>
+            </div>
+
+            <div class="group">
+              <label for="cs">Subject</label>
+              <input id="cs" class="input">
+            </div>
+
+            <div class="group">
+              <label for="cm2">Message</label>
+              <textarea id="cm2" class="input" rows="5"></textarea>
+              <span id="me" class="err"></span>
+            </div>
+
+            <button class="btn" type="submit">Send message<svg class="ic"><use href="#i-chev"/></svg></button>
+            <div id="cmsg" class="okmsg" role="status"></div>
+          </form>
+        </div>
+
+        <div class="media tall mapbox" style="align-self:stretch">
+          <iframe title="Service center location on Google Maps"
+                  src="https://www.google.com/maps?q=Computer+Repair+Shop+Visakhapatnam&amp;output=embed"
+                  width="100%" height="100%" style="border:0;min-height:420px;display:block"
+                  loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Next steps ===== -->
+    <section class="section alt">
+      <div class="container">
+        <div class="head">
+          <h2>Choose your next step</h2>
+          <p>The quickest way to get help, whichever you prefer.</p>
+        </div>
+        <div class="grid g4">
+          <a class="card" >
+            <div class="ico"><svg class="ic"><use href="#i-phone"/></svg></div>
+            <h3>Call</h3>
+            <p>Speak with our service team.</p>
+          </a>
+          <a class="card" >
+            <div class="ico"><svg class="ic"><use href="#i-mail"/></svg></div>
+            <h3>Email</h3>
+            <p>Send your service enquiry.</p>
+          </a>
+          <a class="card" >
+            <div class="ico"><svg class="ic"><use href="#i-wrench"/></svg></div>
+            <h3>Book a repair</h3>
+            <p>Start a repair request.</p>
+          </a>
+          <a class="card" >
+            <div class="ico"><svg class="ic"><use href="#i-search"/></svg></div>
+            <h3>Track a repair</h3>
+            <p>Check your service journey.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="head">
+          <h2>Before you visit</h2>
+          <p>Quick answers to common questions.</p>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>How long does a typical repair take?<svg class="ic"><use href="#i-plus"/></svg></summary>
+            <p>Many common repairs such as battery, keyboard and RAM or SSD upgrades are completed the same day. Board-level work and data recovery take longer, and we give you an estimate after diagnosis.</p>
+          </details>
+          <details>
+            <summary>Do I pay for the diagnosis?<svg class="ic"><use href="#i-plus"/></svg></summary>
+            <p>We explain the issue and share a quote before any repair work starts. You approve the quote first, so nothing is done without your agreement.</p>
+          </details>
+          <details>
+            <summary>Will my data be safe?<svg class="ic"><use href="#i-plus"/></svg></summary>
+            <p>We back up your files before software work and treat your data as private. For hardware repairs we avoid touching your files unless it is needed for the fix.</p>
+          </details>
+          <details>
+            <summary>Do you use genuine parts?<svg class="ic"><use href="#i-plus"/></svg></summary>
+            <p>Yes. We use genuine or quality-tested components, and we tell you exactly what is going into your device.</p>
+          </details>
+          <details>
+            <summary>Is there a warranty on repairs?<svg class="ic"><use href="#i-plus"/></svg></summary>
+            <p>Completed repairs are covered by a service warranty so you can ask us to look again if the same fault returns.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container foot">
+      <div>
+        <img class="flogo" src="./images/logo-white.webp" alt="Stackly logo" width="100" height="38">
+        <p>Reliable computer repair, diagnostics, upgrades and technical support, explained clearly and tested before you take your device home.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="ic"><use href="#i-ig"/></svg></a>
+          <a href="#" aria-label="X"><svg class="ic"><use href="#i-x"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg class="ic"><use href="#i-in"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="repairs.html">Repairs</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="services.html">Laptop Repair</a></li>
+          <li><a href="services.html">Desktop Repair</a></li>
+          <li><a href="services.html">Windows Installation</a></li>
+          <li><a href="services.html">Data Recovery</a></li>
+          <li><a href="services.html">Hardware Upgrade</a></li>
+          <li><a href="services.html">Networking</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <a class="cl" href="contact.html">
+          <svg class="ic"><use href="#i-pin"/></svg>
+          <span>Computer Service Center<br>Visakhapatnam, Andhra Pradesh</span>
+        </a>
+        <a class="cl" href="tel:+919876543210">
+          <svg class="ic"><use href="#i-phone"/></svg><span>+91 98765 43210</span>
+        </a>
+        <a class="cl" href="mailto:support@computerservice.in">
+          <svg class="ic"><use href="#i-mail"/></svg><span>support@computerservice.in</span>
+        </a>
+        <div class="cl">
+          <svg class="ic"><use href="#i-clock"/></svg><span>Mon–Sat, 9:00 AM – 6:00 PM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container fbar">
+      <span>© <span id="yr">2026</span> Computer Service Center. All rights reserved.</span>
+      <nav>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="contact.html">Support</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ---------- Header shadow on scroll ---------- */
+    var header = document.getElementById('siteHeader');
+    function onScroll() {
+      header.classList.toggle('scrolled', window.scrollY > 8);
+    }
+    onScroll();
+    addEventListener('scroll', onScroll, { passive: true });
+
+    /* ---------- Mobile drawer ---------- */
+    var drawer   = document.getElementById('drawer');
+    var overlay  = document.getElementById('ov');
+    var openBtn  = document.getElementById('menuOpen');
+    var closeBtn = document.getElementById('menuClose');
+
+    function toggleDrawer(open) {
+      drawer.classList.toggle('open', open);
+      overlay.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      openBtn.setAttribute('aria-expanded', open);
+    }
+    openBtn.addEventListener('click',  function () { toggleDrawer(true); });
+    closeBtn.addEventListener('click', function () { toggleDrawer(false); });
+    overlay.addEventListener('click',  function () { toggleDrawer(false); });
+    addEventListener('keydown', function (e) { if (e.key === 'Escape') toggleDrawer(false); });
+    addEventListener('resize',  function () { if (innerWidth > 860) toggleDrawer(false); });
+
+    /* ---------- Footer year ---------- */
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    /* ---------- Contact form validation ---------- */
+    var form = document.getElementById('cf');
+
+    function byId(id) { return document.getElementById(id); }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var name    = byId('cn').value.trim();
+      var email   = byId('ce').value.trim();
+      var phone   = byId('cp').value.trim();
+      var message = byId('cm2').value.trim();
+
+      var nameErr  = byId('ne');
+      var emailErr = byId('ee');
+      var phoneErr = byId('pe');
+      var msgErr   = byId('me');
+      var success  = byId('cmsg');
+
+      // Rules: letters and spaces / .com .in .org email / 10-digit Indian mobile / message required
+      nameErr.textContent  = /^[A-Za-z ]+$/.test(name) ? '' : 'Name must contain alphabets and spaces only.';
+      emailErr.textContent = /^[^\s@]+@[^\s@]+\.(com|in|org)$/i.test(email) ? '' : 'Use a valid .com, .in or .org email.';
+      phoneErr.textContent = /^[6-9]\d{9}$/.test(phone) ? '' : 'Enter a valid 10-digit Indian mobile number.';
+      msgErr.textContent   = message ? '' : 'Please write a short message.';
+
+      success.textContent = '';
+
+      // Stop here if any field has an error
+      if (nameErr.textContent || emailErr.textContent || phoneErr.textContent || msgErr.textContent) return;
+
+      success.textContent = 'Thank you, ' + name.split(' ')[0] + '. Your message is ready and we will get back to you soon.';
+      form.reset();
+    });
+  })();
+  </script>
+</body>
+</html>
