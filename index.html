@@ -225,6 +225,49 @@ a.cl:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(4px)
   .actions .btn{flex:1 1 100%}.feat:hover{transform:none}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+.hero-facts .fact {
+    position: relative;
+    padding: 18px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    transition: transform 0.35s ease,
+                background 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+    cursor: pointer;
+}
+
+.hero-facts .fact:hover {
+    transform: translateY(-7px);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.hero-facts .fact b {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-facts .fact:hover b {
+    color: var(--blue);
+    transform: scale(1.08);
+}
+
+.hero-facts .fact span {
+    display: block;
+    margin-top: 6px;
+    transition: color 0.3s ease;
+}
+
+.hero-facts .fact:hover span {
+    color: #ffffff;
+}
   </style>
 </head>
 
@@ -362,56 +405,56 @@ a.cl:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(4px)
         </div>
         <div class="grid g4">
           <article class="card svc">
-            <div class="thumb"><img src="./images/photos/1577375729152-4c8b5fcda381.jpg" alt="Laptop Repair" width="1000" height="640" loading="lazy"></div>
+            <div class="thumb"><img src="./images/homepage-1.webp" alt="Laptop Repair" width="1000" height="640" loading="lazy"></div>
             <div class="ico"><svg class="ic"><use href="#i-laptop"/></svg></div>
             <h3>Laptop Repair</h3>
             <p>Screen, keyboard, battery, charging and performance fixes and upgrades.</p>
             <a class="link" href="404.html">Book this service<svg class="ic"><use href="#i-chev"/></svg></a>
           </article>
           <article class="card svc">
-            <div class="thumb"><img src="./images/photos/1591238372338-22d30c883a86.jpg" alt="Desktop Repair" width="1000" height="640" loading="lazy"></div>
+            <div class="thumb"><img src="./images/homepage-2.webp" alt="Desktop Repair" width="1000" height="640" loading="lazy"></div>
             <div class="ico"><svg class="ic"><use href="#i-desktop"/></svg></div>
             <h3>Desktop Repair</h3>
             <p>Hardware diagnostics, power supply, cooling and component repairs.</p>
             <a class="link" href="404.html">Book this service<svg class="ic"><use href="#i-chev"/></svg></a>
           </article>
           <article class="card svc">
-            <div class="thumb"><img src="./images/photos/1531297484001-80022131f5a1.jpg" alt="Windows Installation" width="1000" height="640" loading="lazy"></div>
+            <div class="thumb"><img src="./images/homepage-3.webp" alt="Windows Installation" width="1000" height="640" loading="lazy"></div>
             <div class="ico"><svg class="ic"><use href="#i-layers"/></svg></div>
             <h3>Windows Installation</h3>
             <p>Fresh setup, drivers, optimisation and software support.</p>
             <a class="link" href="404.html">Book this service<svg class="ic"><use href="#i-chev"/></svg></a>
           </article>
           <article class="card svc">
-            <div class="thumb"><img src="./images/photos/1498050108023-c5249f4df085.jpg" alt="Virus & Malware Removal" width="1000" height="640" loading="lazy"></div>
+            <div class="thumb"><img src="./images/homepage-4.webp" alt="Virus & Malware Removal" width="1000" height="640" loading="lazy"></div>
             <div class="ico"><svg class="ic"><use href="#i-shield"/></svg></div>
             <h3>Virus & Malware Removal</h3>
             <p>Security cleanup and performance recovery.</p>
             <a class="link" href="404.html">Book this service<svg class="ic"><use href="#i-chev"/></svg></a>
           </article>
           <article class="card svc">
-            <div class="thumb"><img src="./images/photos/1620368523635-df9d83338fc1.jpg" alt="Data Recovery" width="1000" height="640" loading="lazy"></div>
+            <div class="thumb"><img src="./images/homepage-5.webp" alt="Data Recovery" width="1000" height="640" loading="lazy"></div>
             <div class="ico"><svg class="ic"><use href="#i-db"/></svg></div>
             <h3>Data Recovery</h3>
             <p>Recover important files and diagnose storage failures.</p>
             <a class="link" href="404.html">Book this service<svg class="ic"><use href="#i-chev"/></svg></a>
           </article>
           <article class="card svc">
-            <div class="thumb"><img src="./images/photos/1512756290469-ec264b7fbf87.jpg" alt="Hardware Upgrade" width="1000" height="640" loading="lazy"></div>
+            <div class="thumb"><img src="./images/homepage-6.webp" alt="Hardware Upgrade" width="1000" height="640" loading="lazy"></div>
             <div class="ico"><svg class="ic"><use href="#i-chip"/></svg></div>
             <h3>Hardware Upgrade</h3>
             <p>RAM, SSD, HDD and component upgrades.</p>
             <a class="link" href="404.html">Book this service<svg class="ic"><use href="#i-chev"/></svg></a>
           </article>
           <article class="card svc">
-            <div class="thumb"><img src="./images/photos/1667264501379-c1537934c7ab.jpg" alt="Networking" width="1000" height="640" loading="lazy"></div>
+            <div class="thumb"><img src="./images/homepage-7.webp" alt="Networking" width="1000" height="640" loading="lazy"></div>
             <div class="ico"><svg class="ic"><use href="#i-wifi"/></svg></div>
             <h3>Networking</h3>
             <p>Wi-Fi, router, LAN and small-office connectivity.</p>
             <a class="link" href="404.html">Book this service<svg class="ic"><use href="#i-chev"/></svg></a>
           </article>
           <article class="card svc">
-            <div class="thumb"><img src="./images/photos/1591370874773-6702e8f12fd8.jpg" alt="Printer Support" width="1000" height="640" loading="lazy"></div>
+            <div class="thumb"><img src="./images/homepage-8.webp" alt="Printer Support" width="1000" height="640" loading="lazy"></div>
             <div class="ico"><svg class="ic"><use href="#i-printer"/></svg></div>
             <h3>Printer Support</h3>
             <p>Setup, troubleshooting and device connectivity.</p>
@@ -424,7 +467,7 @@ a.cl:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(4px)
     <!-- ===== Why us ===== -->
     <section class="section alt">
       <div class="container split">
-        <div class="media tall"><img src="./images/photos/1562976540-1502c2145186.jpg" alt="Circuit board inside a computer" width="1200" height="857" loading="lazy"></div>
+        <div class="media tall"><img src="./images/homepage-9.webp" alt="Circuit board inside a computer" width="1200" height="857" loading="lazy"></div>
         <div>
           <h2>Professional care for every device.</h2>
           <p class="lead">We combine practical technical expertise with transparent service, genuine components and careful testing.</p>
@@ -473,7 +516,7 @@ a.cl:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(4px)
     <!-- ===== Diagnostics (image on the right) ===== -->
     <section class="section alt">
       <div class="container split rev">
-        <div class="media tall"><img src="./images/photos/1643732774973-ff2d0e610d7a.jpg" alt="Motherboard repair" width="1200" height="857" loading="lazy"></div>
+        <div class="media tall"><img src="./images/homepage-10.webp" alt="Motherboard repair" width="1200" height="857" loading="lazy"></div>
         <div>
           <h2>Advanced computer diagnostics.</h2>
           <p class="lead">We find the real issue before repair begins, which reduces repeat failures and unnecessary part replacements.</p>
@@ -552,11 +595,11 @@ a.cl:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(4px)
           <p>Clean benches, labelled parts and a dedicated testing station.</p>
         </div>
         <div class="gallery">
-          <figure class="media"><img src="./images/photos/1617597302482-31500ac8f71d.jpg" alt="Repair bench" width="1200" height="900" loading="lazy"><figcaption>Repair bench</figcaption></figure>
-          <figure class="media"><img src="./images/photos/1555617778-02518510b9fa.jpg" alt="Processor chip, genuine parts" width="1200" height="900" loading="lazy"><figcaption>Genuine parts stock</figcaption></figure>
-          <figure class="media"><img src="./images/photos/1593640408182-31c70c8268f5.jpg" alt="Testing station" width="1200" height="900" loading="lazy"><figcaption>Testing station</figcaption></figure>
-          <figure class="media"><img src="./images/photos/1519389950473-47ba0277781c.jpg" alt="Team at the center" width="1200" height="857" loading="lazy"><figcaption>Visit the center</figcaption></figure>
-          <figure class="media"><img src="./images/photos/1640552421447-1808735878e1.jpg" alt="Motherboard with cooling fan" width="1200" height="857" loading="lazy"><figcaption>Cooling and board-level service</figcaption></figure>
+          <figure class="media"><img src="./images/homepage-11.webp" alt="Repair bench" width="1200" height="900" loading="lazy"><figcaption>Repair bench</figcaption></figure>
+          <figure class="media"><img src="./images/homepage-12.webp" alt="Processor chip, genuine parts" width="1200" height="900" loading="lazy"><figcaption>Genuine parts stock</figcaption></figure>
+          <figure class="media"><img src="./images/homepage-13.webp" alt="Testing station" width="1200" height="900" loading="lazy"><figcaption>Testing station</figcaption></figure>
+          <figure class="media"><img src="./images/homepage-14.webp" alt="Team at the center" width="1200" height="857" loading="lazy"><figcaption>Visit the center</figcaption></figure>
+          <figure class="media"><img src="./images/homepage-15.webp" alt="Motherboard with cooling fan" width="1200" height="857" loading="lazy"><figcaption>Cooling and board-level service</figcaption></figure>
         </div>
       </div>
     </section>
@@ -583,7 +626,7 @@ a.cl:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(4px)
   <footer class="site-footer">
     <div class="container foot">
       <div>
-        <img class="flogo" src="./images/logo-white.webp" alt="Stackly logo" width="100" height="38">
+        <a href="index.html"><img class="flogo" src="./images/logo-white.webp" alt="Stackly logo" width="100" height="38"></a>
         <p>Reliable computer repair, diagnostics, upgrades and technical support, explained clearly and tested before you take your device home.</p>
         <div class="socials">
           <a href="404.html" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
@@ -601,7 +644,6 @@ a.cl:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(4px)
           <li><a href="repairs.html">Repairs</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Login</a></li>
         </ul>
       </div>
 
@@ -611,7 +653,6 @@ a.cl:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(4px)
           <li><a href="404.html">Laptop Repair</a></li>
           <li><a href="404.html">Desktop Repair</a></li>
           <li><a href="404.html">Windows Installation</a></li>
-          <li><a href="404.html">Data Recovery</a></li>
           <li><a href="404.html">Hardware Upgrade</a></li>
           <li><a href="404.html">Networking</a></li>
         </ul>
